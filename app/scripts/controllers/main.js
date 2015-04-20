@@ -12,7 +12,13 @@ angular.module('mytodoApp')
     $scope.todos = ['Item 1', 'Item 2', 'Item 3'];
     $scope.addTodo = function () {
       console.log($scope.todos.indexOf($scope.todo) == -1);
-      $scope.todos.push($scope.todo);
+
+      if ($scope.todos.indexOf($scope.todo) != -1) {
+        alert('Invalid entry');
+      } else {
+        $scope.todos.push($scope.todo);
+      }
+
       $scope.todo = '';
     }
   });
