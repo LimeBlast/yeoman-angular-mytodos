@@ -12,10 +12,10 @@ angular.module('mytodoApp')
     $scope.todos = [];
 
     $scope.addTodo = function () {
-      console.log($scope.todos.indexOf($scope.todo) == -1);
+      console.log($scope.todos.indexOf($scope.todo) === -1);
 
-      if ($scope.todos.indexOf($scope.todo) != -1) {
-        alert('Invalid entry');
+      if ($scope.todos.indexOf($scope.todo) !== -1) {
+        window.alert('Invalid entry');
       } else {
         $scope.todos.push($scope.todo);
       }
@@ -24,6 +24,6 @@ angular.module('mytodoApp')
     };
 
     $scope.removeTodo = function(index) {
-      $scope.todos.splice(index, 1)
+      $scope.todos.splice(index, 1);
     };
   });
