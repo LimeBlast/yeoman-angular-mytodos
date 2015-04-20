@@ -8,12 +8,17 @@
  * Controller of the mytodoApp
  */
 angular.module('mytodoApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.todos = [];
+  .controller('MainCtrl', function ($scope, localStorageService) {
+
+    var todosInStore = localStorageService.get('todos');
+
+    $scope.todos = todosInStore || [];
+
+    $scope.$watch('todos', function() {
+      localStorageService.set('todos', $scope.todos);
+    }, true);
 
     $scope.addTodo = function () {
-      console.log($scope.todos.indexOf($scope.todo) === -1);
-
       if ($scope.todos.indexOf($scope.todo) !== -1) {
         window.alert('Invalid entry');
       } else {
